@@ -3,9 +3,9 @@ services:
   postgres:
     image: postgres:13.3
     environment:
-      POSTGRES_DB: "alpha"
-      POSTGRES_USER: "alpha"
-      POSTGRES_PASSWORD: "12345"
+      POSTGRES_DB: "changeme"
+      POSTGRES_USER: "changeme"
+      POSTGRES_PASSWORD: "changeme"
     ports:
       - "5432:5432"
 

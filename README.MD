@@ -40,7 +40,9 @@
 
 ### Запуск через Docker
 
-Чтобы запустить приложение через Docker в командной строке надо ввести `docker-compose up`
+1. Зайти в файл `docker-compose.yml` и прописать в поля __POSTGRES_DB__, __POSTGRES_USER__, __POSTGRES_PASSWORD__ название БД, имя пользователя и пароль PostgreSQL
+2. Прописать в командной строке `docker-compose up`
+
 
 ---
 

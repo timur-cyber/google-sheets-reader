@@ -1,5 +1,5 @@
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
-SERVICE_ACCOUNT_FILE = 'keys.json'
+SERVICE_ACCOUNT_FILE = 'src/keys.json'
 
 creds = None
 

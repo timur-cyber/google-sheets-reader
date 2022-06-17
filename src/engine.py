@@ -1,3 +1,4 @@
+import datetime
 from typing import List
 
 from googleapiclient.discovery import build
@@ -6,9 +7,13 @@ from google.oauth2 import service_account
 from exchange import make_exchange
 from models import Base, Records, get_session
 from sheets import SERVICE_ACCOUNT_FILE, SCOPES, SAMPLE_SPREADSHEET_ID
+from bot import send_message_w_bot
 
 
 class MainClass:
+    """
+    Класс для взаимодействия с разными API и представления общего процесса
+    """
     def get_sheets_data(self):
         """
         Метод для получения данных с таблицы Google Sheets при помощи Google API
@@ -56,3 +61,15 @@ class MainClass:
             )
             session.add(record)
         session.commit()
+
+    def check_date(self, columns: List[List]):
+        """
+        Функция проверки соблюдения срока поставки из таблицы
+        :param columns: List[List]
+        :return: None
+        """
+        for num, order_num, price, price_rub, date_str in columns[1:]:
+            date = datetime.datetime.strptime(date_str, '%d.%m.%Y')
+            if date < datetime.datetime.now():
+                text = f"Заказа №{order_num} просрочен. Дата: {date_str}"
+                send_message_w_bot(text)

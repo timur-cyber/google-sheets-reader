@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <meta http-equiv="refresh" content="5" >
+</head>
+<body>
+    <div class="container">
+        <table>
+          <tr>
+            {% for value in titles %}
+                {% for title in value %}
+                <th>{{ title }}</th>
+                {% endfor %}
+            {% endfor %}
+          </tr>
+          {% for num, order_num, price, price_rub, date in values %}
+          <tr>
+            <td>{{ num }}</td>
+            <td>{{ order_num }}</td>
+            <td>{{ price }}</td>
+            <td>{{ price_rub }}</td>
+            <td>{{ date }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

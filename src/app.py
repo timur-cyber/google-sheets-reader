@@ -10,13 +10,14 @@ static_directory = os.path.join(template_folder, "static")
 
 app = Flask(__name__, template_folder=template_folder, static_folder=static_directory)
 
+engine_api = MainClass()
+
 
 @app.route('/', methods=['GET'])
 def main():
-    obj = MainClass()
-    columns = obj.get_columns_w_ruble()
+    columns = engine_api.get_columns_w_ruble()
     context = dict(titles=columns[:1], values=columns[1:])
-    obj.update_table(columns)
+    engine_api.update_table(columns)
     return render_template("index.html", **context)
 
 
